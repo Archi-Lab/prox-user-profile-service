@@ -21,8 +21,7 @@ public class Tag
     @DBRef(lazy = true)
     private List<Professor> professors_ids;
 
-    public Tag(String id, String beschreibung) {
-        this.id = id;
+    public Tag(String beschreibung) {
         this.beschreibung = beschreibung;
         this.professors_ids=new ArrayList<>();
         this.projekts_ids=new ArrayList<>();

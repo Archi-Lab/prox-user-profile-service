@@ -49,6 +49,9 @@ public class Professor
         this.bildSrc = bildSrc;
         this.fachgebiet = fachgebiet;
         this.description = description;
+        this.projekts_ids=new ArrayList<>();
+        this.moduls_ids=new ArrayList<>();
+        this.tags_ids=new ArrayList<>();
     }
 
     public Professor(String firstName, String lastName, ProfessorDescription description)

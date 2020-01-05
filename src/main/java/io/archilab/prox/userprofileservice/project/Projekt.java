@@ -26,8 +26,6 @@ public class Projekt
     @DBRef(lazy = true)
     private List<Tag> tags_ids;
 
-
-
     public Projekt() {}
 
     public Projekt(String name, String kurzbeschreibung, String beschreibung, Projektart projektart, Status status, int teilnehmerzahl) {
