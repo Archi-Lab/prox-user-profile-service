@@ -1,4 +1,4 @@
-package io.archilab.prox.userprofileservice.professor;
+package io.archilab.prox.userprofileservice.professor.attr;
 
 import javax.persistence.Embeddable;
 
@@ -10,11 +10,14 @@ import lombok.*;
 @Getter(AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 
-public class ProfessorDescription
-{
+public class ProfessorDescription {
+
     private static final int MAX_LENGTH = 3000;
 
+    @Getter
     private boolean hasDescription;
+
+    @Getter
     private String description;
 
     public ProfessorDescription(String description)
@@ -51,6 +54,6 @@ public class ProfessorDescription
     {
         return String.format(
                 "%s",
-                 description);
+                description);
     }
 }
