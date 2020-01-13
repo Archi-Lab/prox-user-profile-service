@@ -4,8 +4,8 @@
 
 To run the docker containter with the postgresql database, run the docker-compose.yml with the following commands in the shell: 
 ```
-docker up -d
+docker-compose up -d
 ```
 ```
-docker up
+docker-compose up
 ```
