@@ -1,10 +1,7 @@
 package io.archilab.prox.userprofileservice.professor;
 
 import io.archilab.prox.userprofileservice.core.AbstractEntity;
-import io.archilab.prox.userprofileservice.professor.attr.ProfessorDescription;
-import io.archilab.prox.userprofileservice.professor.attr.ProfessorFirstName;
-import io.archilab.prox.userprofileservice.professor.attr.ProfessorLastName;
-import io.archilab.prox.userprofileservice.professor.attr.ProfessorTitle;
+import io.archilab.prox.userprofileservice.professor.attr.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,24 +28,38 @@ public class Professor extends AbstractEntity {
     private ProfessorDescription description;
 
     @Setter
-    private String raum;
+    private ProfessorRaum raum;
 
     @Setter
-    private long telefonnummer;
+    private ProfessorTelefonnummer telefonnummer;
 
     @Setter
-    private String email;
+    private ProfessorEmail email;
 
     @Setter
-    private String sprechzeiten;
+    private ProfessorSprechzeiten sprechzeiten;
 
     @Setter
-    private String bildSrc;
+    private ProfessorBildSrc bildSrc;
 
     @NotNull
     @Setter
-    private String fachgebiet;
+    private ProfessorFachgebiet fachgebiet;
 
+    public Professor(){}
 
-
+    public Professor(@NotNull ProfessorFirstName firstName, @NotNull ProfessorLastName lastName, ProfessorTitle title, ProfessorDescription description,
+                     ProfessorRaum raum, ProfessorTelefonnummer telefonnummer, ProfessorEmail email, ProfessorSprechzeiten sprechzeiten, ProfessorBildSrc bildSrc,
+                     @NotNull ProfessorFachgebiet fachgebiet) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.title = title;
+        this.description = description;
+        this.raum = raum;
+        this.telefonnummer = telefonnummer;
+        this.email = email;
+        this.sprechzeiten = sprechzeiten;
+        this.bildSrc = bildSrc;
+        this.fachgebiet = fachgebiet;
+    }
 }

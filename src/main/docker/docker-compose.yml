@@ -9,7 +9,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=dozent
       - POSTGRES_USER=dozent
-      - POSTGRES_DB=profile-service
+      - POSTGRES_DB=user-profile-service
       - PGDATA=/var/lib/postgresql/data/pgdata
 
     ports:
