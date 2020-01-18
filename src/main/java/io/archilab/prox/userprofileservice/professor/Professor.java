@@ -14,12 +14,12 @@ import javax.persistence.Entity;
 public class Professor extends AbstractEntity {
 
     @NotNull
-    @Setter
-    private ProfessorFirstName firstName;
+    @Setter(AccessLevel.PUBLIC)
+    private PersonFirstName firstName;
 
     @NotNull
     @Setter
-    private ProfessorLastName lastName;
+    private PersonLastName lastName;
 
     @Setter
     private ProfessorTitle title;
@@ -46,11 +46,10 @@ public class Professor extends AbstractEntity {
     @Setter
     private ProfessorFachgebiet fachgebiet;
 
-    public Professor(){}
-
-    public Professor(@NotNull ProfessorFirstName firstName, @NotNull ProfessorLastName lastName, ProfessorTitle title, ProfessorDescription description,
+    public Professor(@NotNull PersonFirstName firstName, @NotNull PersonLastName lastName, ProfessorTitle title, ProfessorDescription description,
                      ProfessorRaum raum, ProfessorTelefonnummer telefonnummer, ProfessorEmail email, ProfessorSprechzeiten sprechzeiten, ProfessorBildSrc bildSrc,
                      @NotNull ProfessorFachgebiet fachgebiet) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;

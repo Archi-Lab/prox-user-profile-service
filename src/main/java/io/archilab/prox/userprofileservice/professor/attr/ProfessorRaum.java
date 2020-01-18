@@ -17,8 +17,6 @@ public class ProfessorRaum {
 
     private static int MAX_LENGTH = 16;
 
-    public ProfessorRaum() {}
-
     public ProfessorRaum(String raum)
     {
         if(!isValid(raum)) {

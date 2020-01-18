@@ -14,17 +14,36 @@ public class ProfessorBildSrc {
     private String bildSrc;
     private boolean hasBild;
 
-    public ProfessorBildSrc() {}
+    private static final int MAX_LENGTH = 255;
+
 
     public ProfessorBildSrc(String bildSrc)
     {
-        hasBild = hasBild(bildSrc);
-        this.bildSrc = bildSrc;
+        if(!isValid(bildSrc))
+        {
+            throw new IllegalArgumentException(
+                    String.format("Name %s exceeded maximum number of %d allowed characters", bildSrc,
+                            MAX_LENGTH));
+        }
+        if(bildSrc.equals(""))
+        {
+            //this.bildSrc = "NULL";
+            hasBild = false;
+        }
+        else
+        {
+            this.bildSrc = bildSrc;
+            hasBild = true;
+        }
     }
 
-    private boolean hasBild(String bildSrc)
+    public static boolean isValid(String bildSrc)
     {
-        return bildSrc != null;
+        if(bildSrc.equals(""))
+        {
+            return true;
+        }
+        return bildSrc.length() <= MAX_LENGTH ;
     }
 
 }

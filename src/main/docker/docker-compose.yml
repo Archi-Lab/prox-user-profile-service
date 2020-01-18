@@ -4,12 +4,15 @@ version: '3.3'
 services:
   postgres-db:
     image: postgres
+    networks: 
+      - prox
+      - user-profile-db
     volumes: 
       - db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=dozent
-      - POSTGRES_USER=dozent
-      - POSTGRES_DB=user-profile-service
+      - POSTGRES_PASSWORD=user-profile-service
+      - POSTGRES_USER=user-profile-service
+      - POSTGRES_DB=user-profile-db
       - PGDATA=/var/lib/postgresql/data/pgdata
 
     ports:
@@ -18,3 +21,8 @@ services:
 volumes:
  db-data:
     driver: local
+
+networks:
+  prox:
+    external: true
+  user-profile-db:

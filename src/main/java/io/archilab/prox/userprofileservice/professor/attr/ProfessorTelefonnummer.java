@@ -13,8 +13,6 @@ public class ProfessorTelefonnummer {
 
     private long telefonnummer;
 
-    public ProfessorTelefonnummer() {}
-
     public ProfessorTelefonnummer(long telefonnummer)
     {
         this.telefonnummer = telefonnummer;

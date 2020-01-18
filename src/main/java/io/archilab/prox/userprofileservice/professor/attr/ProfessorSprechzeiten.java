@@ -15,8 +15,6 @@ public class ProfessorSprechzeiten {
 
     private static int MAX_LENGTH = 64;
 
-    public ProfessorSprechzeiten() {}
-
     public ProfessorSprechzeiten(String sprechzeiten)
     {
         if(!isValid(sprechzeiten))

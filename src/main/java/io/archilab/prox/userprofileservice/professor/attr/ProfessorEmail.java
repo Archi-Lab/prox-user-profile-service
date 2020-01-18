@@ -15,14 +15,14 @@ public class ProfessorEmail {
 
     private static int MAX_LENGTH = 127;
 
-    public ProfessorEmail() {}
-
     public ProfessorEmail(String email)
     {
         if(!isValid(email))
         {
-            this.email = email;
+            throw new IllegalArgumentException( String.format("Email %s exceeded maximum number of %d allowed characters", email,
+                    MAX_LENGTH));
         }
+        this.email = email;
     }
 
     private boolean isValid(String email)

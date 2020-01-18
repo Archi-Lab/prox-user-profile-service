@@ -30,7 +30,7 @@ public class ProfessorDescription {
         }
         if(description.equals(""))
         {
-            description = "None";
+            //this.description = "NULL";
             hasDescription = false;
         }
         else
