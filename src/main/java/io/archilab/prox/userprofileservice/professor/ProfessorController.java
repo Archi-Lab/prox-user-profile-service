@@ -7,11 +7,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -20,25 +20,25 @@ public class ProfessorController {
     @Autowired
     private ProfessorRepository professorRepository;
 
-    @GetMapping("/professor")
+    @GetMapping("/userprofile/professor")
     public Page findProfessors(Pageable pageable)
     {
         return professorRepository.findAll(pageable);
     }
 
-    @GetMapping("/professor/findByLastName")
+    @GetMapping("/userprofile/professor/findByLastName")
     public List<Professor> findProfessorsByLastName(@Valid @RequestBody PersonLastName lastName)
     {
         return professorRepository.findByLastName(lastName);
     }
 
-    @PostMapping(value = "/professor", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/userprofile/professor", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Professor createProfessor(@Valid @RequestBody Professor professor)
     {
         return professorRepository.save(professor);
     }
 
-    @PutMapping("/professor/{professorId}")
+    @PutMapping("/userprofile/professor/{professorId}")
     public Professor updateProfessor(@PathVariable UUID professorId,
                                      @Valid @RequestBody Professor professorRequest)
     {
@@ -58,7 +58,7 @@ public class ProfessorController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Professor with id " + professorId + "not found"));
     }
 
-    @DeleteMapping("professor/{professorId}")
+    @DeleteMapping("/userprofile/professor/{professorId}")
     public ResponseEntity<?> deleteProfessor(@PathVariable UUID professorId)
     {
         return professorRepository.findById(professorId)
@@ -67,4 +67,11 @@ public class ProfessorController {
                     return ResponseEntity.ok().build();
                 }).orElseThrow(() -> new ResourceNotFoundException("Professor with id " + professorId + " not found"));
     }
+
+    @GetMapping("/userprofile/professor/{professorId}")
+    public Optional<Professor> findProfessorById(@PathVariable UUID professorId)
+    {
+        return professorRepository.findById(professorId);
+    }
+
 }

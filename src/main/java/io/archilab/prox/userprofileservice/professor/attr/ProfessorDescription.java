@@ -7,7 +7,6 @@ import lombok.*;
 @Embeddable
 @Data
 @Setter(AccessLevel.NONE)
-@Getter(AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 
 public class ProfessorDescription {

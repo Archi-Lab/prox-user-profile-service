@@ -6,7 +6,6 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 @Data
-@Getter(AccessLevel.PROTECTED)
 @Setter(AccessLevel.NONE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProfessorTelefonnummer {
