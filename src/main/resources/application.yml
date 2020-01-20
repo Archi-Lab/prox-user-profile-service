@@ -1,0 +1,31 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://service-discovery:8761/eureka/
+keycloak:
+  auth-server-url: https://login.archi-lab.io/auth
+  bearer-only: true
+  cors: false
+  principal-attribute: preferred_username
+  public-client: false
+  realm: archilab
+  resource: user-profile-service
+server:
+  port: 9004
+  use-forward-headers: true
+spring:
+  application:
+    name: user-profile-service
+  datasource:
+    password: user-profile-service
+    url: jdbc:postgresql://user-profile-db:5432/user-profile-db
+    username: user-profile-service
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
