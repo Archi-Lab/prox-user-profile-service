@@ -15,5 +15,6 @@ public interface ProfessorRepository extends JpaRepository<Professor, Long> {
     Optional<Professor> findById(UUID id);
     List<Professor> findByFirstName(PersonFirstName firstName);
     List<Professor> findByLastName(PersonLastName lastName);
+    Optional<Professor> findByKeycloakId(UUID keycloakId);
 
 }

@@ -1,6 +1,8 @@
-package io.archilab.prox.userprofileservice.student;
+package io.archilab.prox.userprofileservice;
 
 import io.archilab.prox.userprofileservice.professor.Professor;
+import io.archilab.prox.userprofileservice.student.Student;
+import io.archilab.prox.userprofileservice.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

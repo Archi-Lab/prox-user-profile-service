@@ -1,5 +1,7 @@
-package io.archilab.prox.userprofileservice.professor;
+package io.archilab.prox.userprofileservice;
 
+import io.archilab.prox.userprofileservice.professor.Professor;
+import io.archilab.prox.userprofileservice.professor.ProfessorRepository;
 import io.archilab.prox.userprofileservice.professor.attr.PersonLastName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

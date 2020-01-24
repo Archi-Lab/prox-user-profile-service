@@ -6,12 +6,18 @@ import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Entity;
+import java.util.UUID;
 
 @Entity
 @Getter
 @ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Professor extends AbstractEntity {
+
+    @NotNull
+    @Setter(AccessLevel.PUBLIC)
+    @Getter
+    private UUID keycloakId;
 
     @NotNull
     @Setter(AccessLevel.PUBLIC)
@@ -46,10 +52,11 @@ public class Professor extends AbstractEntity {
     @Setter
     private ProfessorFachgebiet fachgebiet;
 
-    public Professor(@NotNull PersonFirstName firstName, @NotNull PersonLastName lastName, ProfessorTitle title, ProfessorDescription description,
+    public Professor(@NotNull UUID keycloakId, @NotNull PersonFirstName firstName, @NotNull PersonLastName lastName, ProfessorTitle title, ProfessorDescription description,
                      ProfessorRaum raum, ProfessorTelefonnummer telefonnummer, ProfessorEmail email, ProfessorSprechzeiten sprechzeiten, ProfessorBildSrc bildSrc,
                      @NotNull ProfessorFachgebiet fachgebiet) {
 
+        this.keycloakId = keycloakId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;

@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 @MappedSuperclass
 @Data
 @Setter(AccessLevel.NONE)
-public class AbstractEntity {
+public abstract class AbstractEntity {
 
     @Id
     private UUID id;
