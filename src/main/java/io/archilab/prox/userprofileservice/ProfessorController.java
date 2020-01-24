@@ -20,25 +20,25 @@ public class ProfessorController {
     @Autowired
     private ProfessorRepository professorRepository;
 
-    @GetMapping("/userprofile/professor")
+    @GetMapping(value = "/userprofile/professors")
     public Page findProfessors(Pageable pageable)
     {
         return professorRepository.findAll(pageable);
     }
 
-    @GetMapping("/userprofile/professor/findByLastName")
+    @GetMapping(value = "/userprofile/professors/findByLastName")
     public List<Professor> findProfessorsByLastName(@Valid @RequestBody PersonLastName lastName)
     {
         return professorRepository.findByLastName(lastName);
     }
 
-    @PostMapping(value = "/userprofile/professor", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/userprofiles/professor", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Professor createProfessor(@Valid @RequestBody Professor professor)
     {
         return professorRepository.save(professor);
     }
 
-    @PutMapping("/userprofile/professor/{professorId}")
+    @PutMapping(value = "/userprofile/professors/{professorId}")
     public Professor updateProfessor(@PathVariable UUID professorId,
                                      @Valid @RequestBody Professor professorRequest)
     {
@@ -58,7 +58,7 @@ public class ProfessorController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Professor with id " + professorId + "not found"));
     }
 
-    @DeleteMapping("/userprofile/professor/{professorId}")
+    @DeleteMapping(value = "/userprofile/professors/{professorId}")
     public ResponseEntity<?> deleteProfessor(@PathVariable UUID professorId)
     {
         return professorRepository.findById(professorId)
@@ -68,10 +68,16 @@ public class ProfessorController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Professor with id " + professorId + " not found"));
     }
 
-    @GetMapping("/userprofile/professor/{professorId}")
+    @GetMapping(value = "/userprofile/professors/{professorId}")
     public Optional<Professor> findProfessorById(@PathVariable UUID professorId)
     {
         return professorRepository.findById(professorId);
+    }
+
+    @GetMapping(value = "/userprofile/professors/get/{professorKeycloakId}")
+    public Optional<Professor> findProfessorByKeycloakId(@PathVariable UUID professorKeycloakId)
+    {
+        return professorRepository.findByKeycloakId(professorKeycloakId);
     }
 
 }
