@@ -34,7 +34,7 @@ public class ProfessorController {
         return professorRepository.findByLastName(lastName);
     }
 
-    @PostMapping(value = "/userprofile/professor", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/userprofile/professors", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Professor createProfessor(@Valid @RequestBody Professor professor)
     {
         return professorRepository.save(professor);
