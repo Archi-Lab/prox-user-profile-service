@@ -1,12 +1,15 @@
 package io.archilab.prox.userprofileservice.student;
 
 import io.archilab.prox.userprofileservice.core.AbstractEntity;
-import io.archilab.prox.userprofileservice.professor.attr.PersonFirstName;
-import io.archilab.prox.userprofileservice.professor.attr.PersonLastName;
+import io.archilab.prox.userprofileservice.professor.attr.PersonAboutMe;
+import io.archilab.prox.userprofileservice.professor.attr.PersonMail;
+import io.archilab.prox.userprofileservice.professor.attr.PersonName;
+import io.archilab.prox.userprofileservice.professor.attr.PersonPhoneNumber;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Entity;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -16,15 +19,65 @@ public class Student extends AbstractEntity
 {
     @NotNull
     @Setter(AccessLevel.PUBLIC)
-    private PersonFirstName firstName;
+    private UUID keycloakId;
 
     @NotNull
     @Setter(AccessLevel.PUBLIC)
-    private PersonLastName lastName;
+    private PersonName name;
 
-    public Student(@NotNull PersonFirstName firstName, @NotNull PersonLastName lastName){
+    @Setter(AccessLevel.PUBLIC)
+    private PersonPhoneNumber phoneNumber;
 
-        this.firstName = firstName;
-        this.lastName = lastName;
+    @NotNull
+    @Setter(AccessLevel.PUBLIC)
+    private PersonMail mail;
+
+    @Setter(AccessLevel.PUBLIC)
+    private String tags;
+
+    @Setter(AccessLevel.PUBLIC)
+    private PersonAboutMe aboutMe;
+
+    @NotNull
+    @Setter(AccessLevel.PUBLIC)
+    private String studiengang;
+
+    @NotNull
+    @Setter(AccessLevel.PUBLIC)
+    private String schwerpunkt;
+
+    @NotNull
+    @Setter(AccessLevel.PUBLIC)
+    private String semester;
+
+    @NotNull
+    @Setter(AccessLevel.PUBLIC)
+    private String status;
+
+    @Setter(AccessLevel.PUBLIC)
+    private String qualifikation;
+
+    @Setter(AccessLevel.PUBLIC)
+    private String doneModules;
+
+    @Setter(AccessLevel.PUBLIC)
+    private String doneJobs;
+
+    public Student(@NotNull UUID keycloakId, @NotNull PersonName name, PersonPhoneNumber phoneNumber, PersonMail mail,
+                   String tags, PersonAboutMe aboutMe, String studiengang, String schwerpunkt, String semester, String status,
+                   String qualifikation, String doneModules, String doneJobs){
+
+        this.keycloakId = keycloakId;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.mail = mail;
+        this.tags = tags;
+        this.aboutMe = aboutMe;
+        this.studiengang = studiengang;
+        this.schwerpunkt = schwerpunkt;
+        this.semester = semester;
+        this.qualifikation = qualifikation;
+        this.doneModules = doneModules;
+        this.doneJobs = doneJobs;
     }
 }

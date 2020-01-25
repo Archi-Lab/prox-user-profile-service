@@ -2,7 +2,7 @@ package io.archilab.prox.userprofileservice;
 
 import io.archilab.prox.userprofileservice.professor.Professor;
 import io.archilab.prox.userprofileservice.professor.ProfessorRepository;
-import io.archilab.prox.userprofileservice.professor.attr.PersonLastName;
+import io.archilab.prox.userprofileservice.professor.attr.PersonName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,10 +28,10 @@ public class ProfessorController {
         return professorRepository.findAll(pageable);
     }
 
-    @GetMapping(value = "/userprofile/professors/findByLastName")
-    public List<Professor> findProfessorsByLastName(@Valid @RequestBody PersonLastName lastName)
+    @GetMapping(value = "/userprofile/professors/findByName")
+    public List<Professor> findProfessorsByLastName(@Valid @RequestBody PersonName name)
     {
-        return professorRepository.findByLastName(lastName);
+        return professorRepository.findByName(name);
     }
 
     @PostMapping(value = "/userprofile/professors", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -46,16 +46,17 @@ public class ProfessorController {
     {
         return professorRepository.findById(professorId)
                 .map(professor -> {
-                    professor.setFirstName(professorRequest.getFirstName());
-                    professor.setLastName((professorRequest.getLastName()));
-                    professor.setTitle((professorRequest.getTitle()));
-                    professor.setDescription(professorRequest.getDescription());
-                    professor.setRaum((professorRequest.getRaum()));
-                    professor.setTelefonnummer(professorRequest.getTelefonnummer());
-                    professor.setEmail(professorRequest.getEmail());
+                    professor.setName(professorRequest.getName());
+                    professor.setAdresse((professorRequest.getAdresse()));
+                    professor.setStrasse(professorRequest.getStrasse());
+                    professor.setPlz((professorRequest.getPlz()));
+                    professor.setRaum(professorRequest.getRaum());
+                    professor.setPhoneNumber(professorRequest.getPhoneNumber());
+                    professor.setMail(professorRequest.getMail());
+                    professor.setTags(professorRequest.getTags());
                     professor.setSprechzeiten(professorRequest.getSprechzeiten());
                     professor.setBildSrc(professorRequest.getBildSrc());
-                    professor.setFachgebiet(professorRequest.getFachgebiet());
+                    professor.setAboutMe(professorRequest.getAboutMe());
                     return professorRepository.save(professor);
                 }).orElseThrow(() -> new ResourceNotFoundException("Professor with id " + professorId + "not found"));
     }

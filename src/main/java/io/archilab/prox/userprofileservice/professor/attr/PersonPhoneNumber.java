@@ -8,11 +8,11 @@ import javax.persistence.Embeddable;
 @Data
 @Setter(AccessLevel.NONE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProfessorTelefonnummer {
+public class PersonPhoneNumber {
 
     private long telefonnummer;
 
-    public ProfessorTelefonnummer(long telefonnummer)
+    public PersonPhoneNumber(long telefonnummer)
     {
         this.telefonnummer = telefonnummer;
     }

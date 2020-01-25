@@ -8,13 +8,13 @@ import javax.persistence.Embeddable;
 @Data
 @Setter(AccessLevel.NONE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProfessorEmail {
+public class PersonMail {
 
     private String email;
 
     private static int MAX_LENGTH = 127;
 
-    public ProfessorEmail(String email)
+    public PersonMail(String email)
     {
         if(!isValid(email))
         {

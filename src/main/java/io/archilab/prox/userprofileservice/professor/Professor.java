@@ -21,26 +21,28 @@ public class Professor extends AbstractEntity {
 
     @NotNull
     @Setter(AccessLevel.PUBLIC)
-    private PersonFirstName firstName;
+    private PersonName name;
 
-    @NotNull
-    @Setter
-    private PersonLastName lastName;
+    @Setter(AccessLevel.PUBLIC)
+    private ProfessorAdresse adresse;
 
-    @Setter
-    private ProfessorTitle title;
+    @Setter(AccessLevel.PUBLIC)
+    private ProfessorStrasse strasse;
 
-    @Setter
-    private ProfessorDescription description;
+    @Setter(AccessLevel.PUBLIC)
+    private ProfessorPlz plz;
 
     @Setter
     private ProfessorRaum raum;
 
     @Setter
-    private ProfessorTelefonnummer telefonnummer;
+    private PersonPhoneNumber phoneNumber;
 
     @Setter
-    private ProfessorEmail email;
+    private PersonMail mail;
+
+    @Setter(AccessLevel.PUBLIC)
+    private String tags;
 
     @Setter
     private ProfessorSprechzeiten sprechzeiten;
@@ -48,24 +50,25 @@ public class Professor extends AbstractEntity {
     @Setter
     private ProfessorBildSrc bildSrc;
 
-    @NotNull
     @Setter
-    private ProfessorFachgebiet fachgebiet;
+    private PersonAboutMe aboutMe;
 
-    public Professor(@NotNull UUID keycloakId, @NotNull PersonFirstName firstName, @NotNull PersonLastName lastName, ProfessorTitle title, ProfessorDescription description,
-                     ProfessorRaum raum, ProfessorTelefonnummer telefonnummer, ProfessorEmail email, ProfessorSprechzeiten sprechzeiten, ProfessorBildSrc bildSrc,
-                     @NotNull ProfessorFachgebiet fachgebiet) {
+
+    public Professor(@NotNull UUID keycloakId, @NotNull PersonName name, ProfessorAdresse adresse, ProfessorStrasse strasse,
+                     ProfessorPlz plz, ProfessorRaum raum, PersonPhoneNumber phoneNumber, PersonMail mail, String tags, ProfessorSprechzeiten sprechzeiten,
+                     ProfessorBildSrc bildSrc, PersonAboutMe aboutMe) {
 
         this.keycloakId = keycloakId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.title = title;
-        this.description = description;
+        this.name = name;
+        this.adresse = adresse;
+        this.strasse = strasse;
+        this.plz = plz;
         this.raum = raum;
-        this.telefonnummer = telefonnummer;
-        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.mail = mail;
+        this.tags = tags;
         this.sprechzeiten = sprechzeiten;
         this.bildSrc = bildSrc;
-        this.fachgebiet = fachgebiet;
+        this.aboutMe = aboutMe;
     }
 }

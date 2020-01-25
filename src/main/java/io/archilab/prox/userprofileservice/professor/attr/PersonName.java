@@ -11,22 +11,22 @@ import javax.persistence.Embeddable;
 @Data
 @Setter(AccessLevel.NONE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PersonFirstName {
+public class PersonName {
 
     private static final int MAX_LENGTH = 127;
 
     private String firstName;
 
-    public PersonFirstName(String firstName) {
+    public PersonName(String firstName) {
         if(!isValid(firstName)) {
             throw new IllegalArgumentException(
                     String.format("FirstName %s exceeded maximum number of %d allowed characters", firstName,
-                            PersonFirstName.MAX_LENGTH));
+                            PersonName.MAX_LENGTH));
         }
         this.firstName = firstName.trim();
     }
 
     public static boolean isValid(String firstName) {
-        return firstName != null && firstName.length() <= PersonFirstName.MAX_LENGTH;
+        return firstName != null && firstName.length() <= PersonName.MAX_LENGTH;
     }
 }

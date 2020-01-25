@@ -9,7 +9,7 @@ import lombok.*;
 @Setter(AccessLevel.NONE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 
-public class ProfessorDescription {
+public class PersonAboutMe {
 
     private static final int MAX_LENGTH = 3000;
 
@@ -19,13 +19,13 @@ public class ProfessorDescription {
     @Getter
     private String description;
 
-    public ProfessorDescription(String description)
+    public PersonAboutMe(String description)
     {
-        if(!ProfessorDescription.isValid(description))
+        if(!PersonAboutMe.isValid(description))
         {
             throw new IllegalArgumentException(
                     String.format("Name %s exceeded maximum number of %d allowed characters", description,
-                            ProfessorDescription.MAX_LENGTH));
+                            PersonAboutMe.MAX_LENGTH));
         }
         if(description.equals(""))
         {
