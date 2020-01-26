@@ -15,18 +15,18 @@ public class PersonName {
 
     private static final int MAX_LENGTH = 127;
 
-    private String firstName;
+    private String name;
 
-    public PersonName(String firstName) {
-        if(!isValid(firstName)) {
+    public PersonName(String name) {
+        if(!isValid(name)) {
             throw new IllegalArgumentException(
-                    String.format("FirstName %s exceeded maximum number of %d allowed characters", firstName,
+                    String.format("FirstName %s exceeded maximum number of %d allowed characters", name,
                             PersonName.MAX_LENGTH));
         }
-        this.firstName = firstName.trim();
+        this.name = name.trim();
     }
 
-    public static boolean isValid(String firstName) {
-        return firstName != null && firstName.length() <= PersonName.MAX_LENGTH;
+    public static boolean isValid(String name) {
+        return name != null && name.length() <= PersonName.MAX_LENGTH;
     }
 }

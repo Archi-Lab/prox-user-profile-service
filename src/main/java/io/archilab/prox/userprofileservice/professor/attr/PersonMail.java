@@ -10,7 +10,7 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PersonMail {
 
-    private String email;
+    private String mail;
 
     private static int MAX_LENGTH = 127;
 
@@ -21,7 +21,7 @@ public class PersonMail {
             throw new IllegalArgumentException( String.format("Email %s exceeded maximum number of %d allowed characters", email,
                     MAX_LENGTH));
         }
-        this.email = email;
+        this.mail = email;
     }
 
     private boolean isValid(String email)

@@ -1,5 +1,6 @@
 package io.archilab.prox.userprofileservice.professor;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import io.archilab.prox.userprofileservice.core.AbstractEntity;
 import io.archilab.prox.userprofileservice.professor.attr.*;
 import lombok.*;
@@ -17,40 +18,52 @@ public class Professor extends AbstractEntity {
     @NotNull
     @Setter(AccessLevel.PUBLIC)
     @Getter
+    @JsonUnwrapped
     private UUID keycloakId;
 
     @NotNull
     @Setter(AccessLevel.PUBLIC)
+    @JsonUnwrapped
     private PersonName name;
 
     @Setter(AccessLevel.PUBLIC)
+    @JsonUnwrapped
     private ProfessorAdresse adresse;
 
     @Setter(AccessLevel.PUBLIC)
+    @JsonUnwrapped
     private ProfessorStrasse strasse;
 
     @Setter(AccessLevel.PUBLIC)
+    @JsonUnwrapped
     private ProfessorPlz plz;
 
     @Setter
+    @JsonUnwrapped
     private ProfessorRaum raum;
 
     @Setter
+    @JsonUnwrapped
     private PersonPhoneNumber phoneNumber;
 
     @Setter
+    @JsonUnwrapped
     private PersonMail mail;
 
     @Setter(AccessLevel.PUBLIC)
+    @JsonUnwrapped
     private String tags;
 
     @Setter
+    @JsonUnwrapped
     private ProfessorSprechzeiten sprechzeiten;
 
     @Setter
+    @JsonUnwrapped
     private ProfessorBildSrc bildSrc;
 
     @Setter
+    @JsonUnwrapped
     private PersonAboutMe aboutMe;
 
 

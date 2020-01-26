@@ -11,8 +11,10 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 @RestController
 public class StudentController
@@ -20,35 +22,47 @@ public class StudentController
     @Autowired
     private StudentRepository studentRepository;
 
+    private Logger LOG = Logger.getGlobal();
+
     @GetMapping(value = "/userprofile/students")
     public Page findStudents(Pageable pageable)
     {
+        Date date = new Date();
+        LOG.info( date.toString() + " Methode aufgerufen: findStudents");
         return studentRepository.findAll(pageable);
     }
 
-    @PostMapping(value = "/userprofiles/students", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Student createProfessor(@Valid @RequestBody Student student)
+    @PostMapping(value = "/userprofile/students", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Student createStudent(@Valid @RequestBody Student student)
     {
+        Date date = new Date();
+        LOG.info( date.toString() + " Methode aufgerufen: createStudent");
         return studentRepository.save(student);
     }
 
     @GetMapping(value = "/userprofile/students/{studentId}")
     public Optional<Student> findStudentById(@PathVariable UUID studentId)
     {
-        return studentRepository.findById(studentId);
+        Date date = new Date();
+        LOG.info( date.toString() + " Methode aufgerufen: findStudentById");
+        return studentRepository.findByKeycloakId(studentId);
     }
 
     @GetMapping(value =  "/userprofile/students/get/{keycloakId}")
     public Optional<Student> findStudentByKeycloakId(@PathVariable UUID keycloakId)
     {
+        Date date = new Date();
+        LOG.info( date.toString() + " Methode aufgerufen: findStudentByKeycloakId");
         return studentRepository.findByKeycloakId(keycloakId);
     }
 
     @PutMapping(value = "/userprofile/students/{studentId}")
-    public Student updateProfessor(@PathVariable UUID studentId,
+    public Student updateStudent(@PathVariable UUID studentId,
                                      @Valid @RequestBody Student studentRequest)
     {
-        return studentRepository.findById(studentId)
+        Date date = new Date();
+        LOG.info( date.toString() + " Methode aufgerufen: updateStudent");
+        return studentRepository.findByKeycloakId(studentId)
                 .map(student -> {
                     student.setName(studentRequest.getName());
                     student.setPhoneNumber(studentRequest.getPhoneNumber());
@@ -63,7 +77,7 @@ public class StudentController
                     student.setDoneModules(studentRequest.getDoneModules());
                     student.setDoneJobs(studentRequest.getDoneJobs());
                     return studentRepository.save(student);
-                }).orElseThrow(() -> new ResourceNotFoundException("Professor with id " + studentId + "not found"));
+                }).orElseThrow(() -> new ResourceNotFoundException("Student with id " + studentId + "not found"));
     }
 
 }

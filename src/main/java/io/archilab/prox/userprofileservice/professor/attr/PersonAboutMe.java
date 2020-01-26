@@ -14,10 +14,10 @@ public class PersonAboutMe {
     private static final int MAX_LENGTH = 3000;
 
     @Getter
-    private boolean hasDescription;
+    private boolean hasAboutMe;
 
     @Getter
-    private String description;
+    private String aboutMe;
 
     public PersonAboutMe(String description)
     {
@@ -30,12 +30,12 @@ public class PersonAboutMe {
         if(description.equals(""))
         {
             //this.description = "NULL";
-            hasDescription = false;
+            hasAboutMe = false;
         }
         else
         {
-            this.description = description;
-            hasDescription = true;
+            this.aboutMe = description;
+            hasAboutMe = true;
         }
     }
 
@@ -53,6 +53,6 @@ public class PersonAboutMe {
     {
         return String.format(
                 "%s",
-                description);
+                aboutMe);
     }
 }
