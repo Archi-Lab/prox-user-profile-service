@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 @Repository
@@ -15,6 +16,6 @@ public interface ProfessorRepository extends JpaRepository<Professor, UUID> {
 
     Optional<Professor> findById(@Param(value = "id") UUID id);
     List<Professor> findByNameNameContains(@Param(value = "name")String name);
-    Optional<Professor> findByKeycloakId(@Param(value = "keycloakId") UUID keycloakId);
+    Set<Professor> findByKeycloakId(@Param(value = "keycloakId") UUID keycloakId);
 
 }
