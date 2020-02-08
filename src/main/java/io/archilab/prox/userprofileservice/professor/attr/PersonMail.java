@@ -3,6 +3,8 @@ package io.archilab.prox.userprofileservice.professor.attr;
 import lombok.*;
 
 import javax.persistence.Embeddable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Embeddable
 @Data
@@ -26,6 +28,22 @@ public class PersonMail {
 
     private boolean isValid(String email)
     {
-        return email != null && email.length() <= MAX_LENGTH;
+        boolean valid = email != null && email.length() <= MAX_LENGTH;
+
+        //RFC 5322
+        String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+
+        Pattern patt = Pattern.compile(regex);
+
+        if(email != null)
+        {
+            Matcher matcher = patt.matcher(email);
+            return valid && matcher.matches();
+        }
+        else
+        {
+            throw new IllegalArgumentException( String.format("Email is empty"));
+        }
+
     }
 }

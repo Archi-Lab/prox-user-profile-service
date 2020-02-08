@@ -31,7 +31,6 @@ public class Student extends AbstractEntity
     @JsonUnwrapped
     private PersonPhoneNumber phoneNumber;
 
-    @NotNull
     @JsonUnwrapped
     @Setter(AccessLevel.PUBLIC)
     private PersonMail mail;
@@ -44,22 +43,14 @@ public class Student extends AbstractEntity
     @JsonUnwrapped
     private PersonAboutMe aboutMe;
 
-    @NotNull
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
     private String studiengang;
 
-    @NotNull
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
     private String schwerpunkt;
 
-    @NotNull
-    @Setter(AccessLevel.PUBLIC)
-    @JsonUnwrapped
-    private String semester;
-
-    @NotNull
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
     private String status;
@@ -77,7 +68,7 @@ public class Student extends AbstractEntity
     private String doneJobs;
 
     public Student(@NotNull UUID keycloakId, @NotNull PersonName name, PersonPhoneNumber phoneNumber, PersonMail mail,
-                   String[] tags, PersonAboutMe aboutMe, String studiengang, String schwerpunkt, String semester, String status,
+                   String[] tags, PersonAboutMe aboutMe, String studiengang, String schwerpunkt, String status,
                    String qualifikation, String doneModules, String doneJobs){
 
         this.keycloakId = keycloakId;
@@ -88,9 +79,14 @@ public class Student extends AbstractEntity
         this.aboutMe = aboutMe;
         this.studiengang = studiengang;
         this.schwerpunkt = schwerpunkt;
-        this.semester = semester;
         this.qualifikation = qualifikation;
         this.doneModules = doneModules;
         this.doneJobs = doneJobs;
+    }
+
+    public Student(@NotNull UUID keycloakId, @NotNull PersonName name) {
+
+        this.keycloakId = keycloakId;
+        this.name = name;
     }
 }

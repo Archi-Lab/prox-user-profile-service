@@ -28,6 +28,10 @@ public class Professor extends AbstractEntity {
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
+    private ProfessorTitle title;
+
+    @Setter(AccessLevel.PUBLIC)
+    @JsonUnwrapped
     private ProfessorAdresse adresse;
 
     @Setter(AccessLevel.PUBLIC)
@@ -67,12 +71,13 @@ public class Professor extends AbstractEntity {
     private PersonAboutMe aboutMe;
 
 
-    public Professor(@NotNull UUID keycloakId, @NotNull PersonName name, ProfessorAdresse adresse, ProfessorStrasse strasse,
+    public Professor(@NotNull UUID keycloakId, @NotNull PersonName name, ProfessorTitle title, ProfessorAdresse adresse, ProfessorStrasse strasse,
                      ProfessorPlz plz, ProfessorRaum raum, PersonPhoneNumber phoneNumber, PersonMail mail, String[] tags, ProfessorSprechzeiten sprechzeiten,
                      ProfessorBildSrc bildSrc, PersonAboutMe aboutMe) {
 
         this.keycloakId = keycloakId;
         this.name = name;
+        this.title = title;
         this.adresse = adresse;
         this.strasse = strasse;
         this.plz = plz;
@@ -83,5 +88,11 @@ public class Professor extends AbstractEntity {
         this.sprechzeiten = sprechzeiten;
         this.bildSrc = bildSrc;
         this.aboutMe = aboutMe;
+    }
+
+    public Professor(@NotNull UUID keycloakId, @NotNull PersonName name) {
+
+        this.keycloakId = keycloakId;
+        this.name = name;
     }
 }
