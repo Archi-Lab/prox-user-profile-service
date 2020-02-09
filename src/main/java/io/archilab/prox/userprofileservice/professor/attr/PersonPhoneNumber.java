@@ -10,9 +10,9 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PersonPhoneNumber {
 
-    private long phonenumber;
+    private String phonenumber;
 
-    public PersonPhoneNumber(long phonenumber)
+    public PersonPhoneNumber(String phonenumber)
     {
         this.phonenumber = phonenumber;
     }
