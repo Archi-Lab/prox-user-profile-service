@@ -1,4 +1,4 @@
-FROM openjdk:8u212-jdk-alpine3.9
+FROM adoptopenjdk:11.0.5_10-jdk-openj9-0.17.0
 
 ARG DEPENDENCY=target/dependency
 COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib

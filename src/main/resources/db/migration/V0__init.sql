@@ -2,7 +2,7 @@ create table professor
 (
     id              uuid not null,
     keycloakId      uuid not null,
-    name           varchar(127),
+    name           varchar(127) not null,
     title           varchar(50),
     adresse         varchar(500),
     strasse         varchar(500),
@@ -10,12 +10,12 @@ create table professor
     raum            varchar(16),
     phoneNumber     varchar(50),
     mail            varchar (127),
-    tags            varchar(3000),
+    tags            text[],
     sprechzeiten    varchar (3000),
     aboutMe         varchar(3000),
     hasAboutMe      BOOLEAN,
     bildSrc         varchar (255),
-    hasBild         BOOLEAN
+    hasBild         BOOLEAN,
     primary key (id)
 );
 
@@ -32,6 +32,6 @@ create table student
     schwerpunkt     varchar(100),
     qualifikation   varchar(3000),
     doneModules     varchar(1000),
-    doneJobs        varchar(1000)
+    doneJobs        varchar(1000),
     primary key (id)
 );

@@ -15,7 +15,7 @@ import java.util.UUID;
 public interface ProfessorRepository extends JpaRepository<Professor, UUID> {
 
     Optional<Professor> findById(@Param(value = "id") UUID id);
-    List<Professor> findByNameNameContains(@Param(value = "name")String name);
+    List<Professor> findByNameNameContainsIgnoreCase(@Param(value = "name")String name);
     Set<Professor> findByKeycloakId(@Param(value = "keycloakId") UUID keycloakId);
 
 }
