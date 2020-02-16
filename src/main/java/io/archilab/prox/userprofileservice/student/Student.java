@@ -61,7 +61,7 @@ public class Student extends AbstractEntity
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
-    private String doneModules;
+    private String[] doneModules;
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
@@ -69,7 +69,7 @@ public class Student extends AbstractEntity
 
     public Student(@NotNull UUID keycloakId, @NotNull PersonName name, PersonPhoneNumber phoneNumber, PersonMail mail,
                    String[] tags, PersonAboutMe aboutMe, String studiengang, String schwerpunkt, String status,
-                   String qualifikation, String doneModules, String doneJobs){
+                   String qualifikation, String[] doneModules, String doneJobs){
 
         this.keycloakId = keycloakId;
         this.name = name;
