@@ -54,10 +54,6 @@ public class Professor extends AbstractEntity {
     @JsonUnwrapped
     private PersonMail mail;
 
-    @Setter(AccessLevel.PUBLIC)
-    @JsonUnwrapped
-    private String[] tags;
-
     @Setter
     @JsonUnwrapped
     private ProfessorSprechzeiten sprechzeiten;
@@ -72,7 +68,7 @@ public class Professor extends AbstractEntity {
 
 
     public Professor(@NotNull UUID keycloakId, @NotNull PersonName name, ProfessorTitle title, ProfessorAdresse adresse, ProfessorStrasse strasse,
-                     ProfessorPlz plz, ProfessorRaum raum, PersonPhoneNumber phoneNumber, PersonMail mail, String[] tags, ProfessorSprechzeiten sprechzeiten,
+                     ProfessorPlz plz, ProfessorRaum raum, PersonPhoneNumber phoneNumber, PersonMail mail, ProfessorSprechzeiten sprechzeiten,
                      ProfessorBildSrc bildSrc, PersonAboutMe aboutMe) {
 
         this.keycloakId = keycloakId;
@@ -84,7 +80,6 @@ public class Professor extends AbstractEntity {
         this.raum = raum;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
-        this.tags = tags;
         this.sprechzeiten = sprechzeiten;
         this.bildSrc = bildSrc;
         this.aboutMe = aboutMe;
