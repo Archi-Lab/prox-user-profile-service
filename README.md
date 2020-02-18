@@ -4,13 +4,13 @@ This service provides a backend for the userprofiles
 
 ## Installation
 
-After a `git clone` or download the following command must be executed once to initialize the projects.
+After a `git clone` or download the following command must be executed once to initialize the profiles.
 
 Windows (CMD/PowerShell)
 
 ```posh
-# Switch to project folder
-cd .\prox-project-service\
+# Switch to userprofile folder
+cd .\prox-user-profile-service\
 # Execute initial build for git hooks...
 .\mvnw.cmd clean test
 ```
@@ -18,8 +18,8 @@ cd .\prox-project-service\
 Linux/MacOS (Bash/Terminal)
 
 ```bash
-# Switch to project folder
-cd prox-project-service/
+# Switch to userprofile folder
+cd prox-user-profile-service/
 # Execute initial build for git hooks...
 ./mvnw clean test
 ```
@@ -43,7 +43,7 @@ Important: The user-profile-service is importing modules and study courses from 
 Powershell
 
 ```posh
-$env:IMAGE='prox-project-service'; `
+$env:IMAGE='prox-user-profile-service'; `
 $env:TAG='latest'; `
 $env:REPOSITORY='docker.nexus.archi-lab.io/archilab'; `
 docker-compose -f ./src/main/docker/docker-compose.yml up
@@ -52,7 +52,7 @@ docker-compose -f ./src/main/docker/docker-compose.yml up
 Bash/Shell
 
 ```bash
-export IMAGE="prox-project-service" &&
+export IMAGE="prox-user-profile-service" &&
 export TAG="latest" &&
 export TAG="docker.nexus.archi-lab.io/archilab" &&
 docker-compose -f ./src/main/docker/docker-compose.yml up
