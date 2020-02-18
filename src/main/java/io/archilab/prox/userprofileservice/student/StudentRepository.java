@@ -16,4 +16,5 @@ public interface StudentRepository extends JpaRepository<Student, UUID>
     Optional<Student> findById(@Param(value = "id")UUID id);
     Set<Student> findByKeycloakId(@Param(value = "keycloakId") UUID keycloakId);
     List<Student> findByNameNameContains(@Param(value = "name") PersonName name);
+    List<Student> findByStatus(@Param(value = "status") String status);
 }
