@@ -23,7 +23,8 @@ import java.util.Map;
 public class StudyCourseClient {
 
   private static final String[] filteredModuleNames =
-      new String[] {"Master Thesis", "Masterarbeit", "Bachelor", "Praxisprojekt"};
+      //new String[] {"Master Thesis", "Masterarbeit", "Bachelor", "Praxisprojekt"};
+        new String[] {""};
   private final EurekaClient eurekaClient;
 
   public StudyCourseClient(@Qualifier("eurekaClient") EurekaClient eurekaClient) {
@@ -89,6 +90,7 @@ public class StudyCourseClient {
           for (EntityModel<Module> moduleResource : moduleResources.getContent()) {
             Module module = moduleResource.getContent();
             if (this.isModuleFiltered(module)) {
+
 
               studyCourse.addModule(module);
             }

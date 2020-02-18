@@ -2,14 +2,18 @@ package io.archilab.prox.userprofileservice.student;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import io.archilab.prox.userprofileservice.core.AbstractEntity;
+import io.archilab.prox.userprofileservice.module.Module;
 import io.archilab.prox.userprofileservice.professor.attr.PersonAboutMe;
 import io.archilab.prox.userprofileservice.professor.attr.PersonMail;
 import io.archilab.prox.userprofileservice.professor.attr.PersonName;
 import io.archilab.prox.userprofileservice.professor.attr.PersonPhoneNumber;
+import io.archilab.prox.userprofileservice.student.attr.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -41,31 +45,32 @@ public class Student extends AbstractEntity
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
-    private String studiengang;
+    private StudentStudiengang studiengang;
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
-    private String schwerpunkt;
+    private StudentSchwerpunkt schwerpunkt;
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
-    private String status;
+    private StudentStatus status;
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
-    private String qualifikation;
+    private StudentQualifikation qualifikation;
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
-    private String[] doneModules;
+    @ElementCollection
+    private List<Module> modules;
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
-    private String doneJobs;
+    private StudentDoneJobs doneJobs;
 
     public Student(@NotNull UUID keycloakId, @NotNull PersonName name, PersonPhoneNumber phoneNumber, PersonMail mail,
-                   PersonAboutMe aboutMe, String studiengang, String schwerpunkt, String status,
-                   String qualifikation, String[] doneModules, String doneJobs){
+                   PersonAboutMe aboutMe, StudentStudiengang studiengang, StudentSchwerpunkt schwerpunkt, StudentStatus status,
+                   StudentQualifikation qualifikation, StudentDoneJobs doneJobs){
 
         this.keycloakId = keycloakId;
         this.name = name;
@@ -74,8 +79,8 @@ public class Student extends AbstractEntity
         this.aboutMe = aboutMe;
         this.studiengang = studiengang;
         this.schwerpunkt = schwerpunkt;
+        this.status = status;
         this.qualifikation = qualifikation;
-        this.doneModules = doneModules;
         this.doneJobs = doneJobs;
     }
 
@@ -83,5 +88,9 @@ public class Student extends AbstractEntity
 
         this.keycloakId = keycloakId;
         this.name = name;
+    }
+
+    public void addModule(Module module) {
+        this.modules.add(module);
     }
 }

@@ -39,7 +39,7 @@ public class StudyCourseService {
       Set<Module> retrievedModules = studyCourse.getModules();
       for (Module module : retrievedModules) {
         Optional<Module> existingModuleOptional =
-            this.moduleRepository.findById(module.getId());
+                this.moduleRepository.findById(module.getId());
 
         if (existingModuleOptional.isPresent()) {
           this.logger.info("Module with ID " + module.getId() + " already exists.");
@@ -49,7 +49,7 @@ public class StudyCourseService {
           this.moduleRepository.save(existingModule);
         } else {
           this.logger
-              .info("Module with ID " + module.getId() + " does not exist yet.");
+                  .info("Module with ID " + module.getId() + " does not exist yet.");
           newModules.add(module);
           this.moduleRepository.save(module);
         }
