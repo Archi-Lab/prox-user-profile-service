@@ -1,22 +1,67 @@
-# prox-user-profile-service
+# Prox User-Profile-Service
 
+This service provides a backend for the userprofiles
 
-## 1. Creating the image
+## Installation
 
-After downloading or cloning the repository, the Maven phase "package" must be executed to create the image.
+After a `git clone` or download the following command must be executed once to initialize the projects.
 
-## 2. Running the docker container
+Windows (CMD/PowerShell)
 
-To run the docker containter with the postgresql database, run the docker-compose.yml with the following commands in the shell:
-
-
-Linux
-```
-export IMAGE="user-profile-service" && export TAG="latest" && export REPOSITORY="docker.nexus.archi-lab.io/archilab" && docker-compose -f ./src/main/docker/docker-compose.yml up
-```
-Windows
-```
-to be added
+```posh
+# Switch to project folder
+cd .\prox-project-service\
+# Execute initial build for git hooks...
+.\mvnw.cmd clean test
 ```
 
+Linux/MacOS (Bash/Terminal)
 
+```bash
+# Switch to project folder
+cd prox-project-service/
+# Execute initial build for git hooks...
+./mvnw clean test
+```
+
+Executes the [Maven default lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) up to the `test` phase. During the `package` phase, an executable JAR and the Docker image are created.
+
+To create the actual docker image, you need to execute the `package` phase.
+
+## Local usage with docker
+
+A Docker network named `prox` is required for the communication between services:
+
+```bash
+docker network create prox
+```
+
+Starts a Docker container based on the compose file and the image.
+
+Important: The user-profile-service is importing modules and study courses from the module-service. For this function to work properly, the service-discovery, api-gateway and module-service must be up and running prior to the user-profile-service beeing started.
+
+Powershell
+
+```posh
+$env:IMAGE='prox-project-service'; `
+$env:TAG='latest'; `
+$env:REPOSITORY='docker.nexus.archi-lab.io/archilab'; `
+docker-compose -f ./src/main/docker/docker-compose.yml up
+```
+
+Bash/Shell
+
+```bash
+export IMAGE="prox-project-service" &&
+export TAG="latest" &&
+export TAG="docker.nexus.archi-lab.io/archilab" &&
+docker-compose -f ./src/main/docker/docker-compose.yml up
+```
+
+## Local usage in IntelliJ IDEA
+
+For the necessary steps please look in [Run/Debug in IntelliJ IDEA](https://github.com/Archi-Lab/prox-local-setup#rundebug-in-intellij-idea).
+
+## About the Team
+
+This service was developed by the IP-WS2019 team and is further maintained by the Archi-Lab team.
