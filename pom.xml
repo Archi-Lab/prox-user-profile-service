@@ -14,7 +14,7 @@
 	<artifactId>prox-user-profile-service</artifactId>
 	<version>${revision}${changelist}</version>
 
-	<name>user-profile-service</name>
+	<name>prox-user-profile-service</name>
 	<description>PROX project for Spring Boot </description>
 
 	<properties>

@@ -3,10 +3,7 @@ package io.archilab.prox.userprofileservice.student;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import io.archilab.prox.userprofileservice.core.AbstractEntity;
 import io.archilab.prox.userprofileservice.module.Module;
-import io.archilab.prox.userprofileservice.professor.attr.PersonAboutMe;
-import io.archilab.prox.userprofileservice.professor.attr.PersonMail;
-import io.archilab.prox.userprofileservice.professor.attr.PersonName;
-import io.archilab.prox.userprofileservice.professor.attr.PersonPhoneNumber;
+import io.archilab.prox.userprofileservice.professor.attr.*;
 import io.archilab.prox.userprofileservice.student.attr.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -68,9 +65,13 @@ public class Student extends AbstractEntity
     @JsonUnwrapped
     private StudentDoneJobs doneJobs;
 
+    @Setter
+    @JsonUnwrapped
+    private ProfessorBildSrc bildSrc;
+
     public Student(@NotNull UUID keycloakId, @NotNull PersonName name, PersonPhoneNumber phoneNumber, PersonMail mail,
                    PersonAboutMe aboutMe, StudentStudiengang studiengang, StudentSchwerpunkt schwerpunkt, StudentStatus status,
-                   StudentQualifikation qualifikation, StudentDoneJobs doneJobs){
+                   StudentQualifikation qualifikation, StudentDoneJobs doneJobs, ProfessorBildSrc bildSrc){
 
         this.keycloakId = keycloakId;
         this.name = name;
@@ -82,6 +83,7 @@ public class Student extends AbstractEntity
         this.status = status;
         this.qualifikation = qualifikation;
         this.doneJobs = doneJobs;
+        this.bildSrc=bildSrc;
     }
 
     public Student(@NotNull UUID keycloakId, @NotNull PersonName name) {
