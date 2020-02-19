@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 @Data
 @Setter(AccessLevel.NONE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ProfessorBildSrc {
+public class PersonBildSrc {
 
     private String bildSrc;
     private boolean hasBild;
@@ -16,7 +16,7 @@ public class ProfessorBildSrc {
     private static final int MAX_LENGTH = 255;
 
 
-    public ProfessorBildSrc(String bildSrc)
+    public PersonBildSrc(String bildSrc)
     {
         if(!isValid(bildSrc))
         {

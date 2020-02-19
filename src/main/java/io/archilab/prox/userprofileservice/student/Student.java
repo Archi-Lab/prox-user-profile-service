@@ -67,11 +67,11 @@ public class Student extends AbstractEntity
 
     @Setter
     @JsonUnwrapped
-    private ProfessorBildSrc bildSrc;
+    private PersonBildSrc bildSrc;
 
     public Student(@NotNull UUID keycloakId, @NotNull PersonName name, PersonPhoneNumber phoneNumber, PersonMail mail,
                    PersonAboutMe aboutMe, StudentStudiengang studiengang, StudentSchwerpunkt schwerpunkt, StudentStatus status,
-                   StudentQualifikation qualifikation, StudentDoneJobs doneJobs, ProfessorBildSrc bildSrc){
+                   StudentQualifikation qualifikation, StudentDoneJobs doneJobs, PersonBildSrc bildSrc){
 
         this.keycloakId = keycloakId;
         this.name = name;
