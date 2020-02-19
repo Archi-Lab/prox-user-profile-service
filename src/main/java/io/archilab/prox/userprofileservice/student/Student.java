@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,10 +58,9 @@ public class Student extends AbstractEntity
     @JsonUnwrapped
     private StudentQualifikation qualifikation;
 
-    @Setter(AccessLevel.PUBLIC)
-    @JsonUnwrapped
-    @ElementCollection
-    private List<Module> modules;
+    @Getter
+    @ManyToMany
+    private List<Module> modules = new ArrayList<>();
 
     @Setter(AccessLevel.PUBLIC)
     @JsonUnwrapped
@@ -70,7 +71,7 @@ public class Student extends AbstractEntity
     private PersonBildSrc bildSrc;
 
     public Student(@NotNull UUID keycloakId, @NotNull PersonName name, PersonPhoneNumber phoneNumber, PersonMail mail,
-                   PersonAboutMe aboutMe, StudentStudiengang studiengang, StudentSchwerpunkt schwerpunkt, StudentStatus status,
+                   PersonAboutMe aboutMe,List<Module> modules, StudentStudiengang studiengang, StudentSchwerpunkt schwerpunkt, StudentStatus status,
                    StudentQualifikation qualifikation, StudentDoneJobs doneJobs, PersonBildSrc bildSrc){
 
         this.keycloakId = keycloakId;
@@ -84,6 +85,7 @@ public class Student extends AbstractEntity
         this.qualifikation = qualifikation;
         this.doneJobs = doneJobs;
         this.bildSrc=bildSrc;
+        this.modules=modules;
     }
 
     public Student(@NotNull UUID keycloakId, @NotNull PersonName name) {
